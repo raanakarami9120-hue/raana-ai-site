@@ -1,77 +1,783 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>خدمات هوش مصنوعی | رعنا کرمی</title>
-    <style>
-        :root {
-            --primary-color: #00fff2;
-            --accent-color: #ff007b;
-            --bg-dark: #0f172a;
-            --glass-bg: rgba(255, 255, 255, 0.05);
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>رعنا کرمی | خدمات هوش مصنوعی</title>
+  <meta name="description" content="رعنا کرمی | مدرس، مشاور و ارائه‌دهنده خدمات هوش مصنوعی، تولید محتوا، طراحی سایت و اتوماسیون" />
+  <style>
+    :root {
+      --bg: #07111f;
+      --bg2: #0c1b2d;
+      --glass: rgba(255,255,255,0.08);
+      --glass-strong: rgba(255,255,255,0.12);
+      --stroke: rgba(255,255,255,0.14);
+      --text: #f3f7ff;
+      --muted: #b7c3d8;
+      --primary: #77e6ff;
+      --secondary: #8c7bff;
+      --accent: #ff78c8;
+      --shadow: 0 20px 60px rgba(0,0,0,0.35);
+      --radius: 24px;
+    }
 
-        body {
-            background-color: var(--bg-dark);
-            background-image: radial-gradient(at 0% 0%, rgba(0, 255, 242, 0.1) 0px, transparent 50%);
-            color: #fff;
-            font-family: 'Segoe UI', Tahoma, sans-serif;
-            margin: 0;
-            padding: 20px;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        .header-top { width: 100%; display: flex; justify-content: space-between; align-items: center; max-width: 1000px; margin-bottom: 50px; }
-        h1 { font-size: 2.2rem; text-align: center; margin-bottom: 5px; color: #fff; }
-        .sub-header { color: #94a3b8; margin-bottom: 40px; text-align: center; }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; width: 100%; max-width: 1100px; }
+    body {
+      font-family: Tahoma, Arial, sans-serif;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(119,230,255,0.18), transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(140,123,255,0.22), transparent 30%),
+        radial-gradient(circle at 50% 85%, rgba(255,120,200,0.15), transparent 25%),
+        linear-gradient(135deg, var(--bg), var(--bg2));
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
 
-        .card { background: var(--glass-bg); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); padding: 30px; border-radius: 20px; text-align: center; }
-        .cta-btn { display: inline-block; margin-top: 20px; padding: 12px 24px; background: linear-gradient(90deg, #00fff2, #00d4ff); color: #000; border-radius: 8px; text-decoration: none; font-weight: bold; width: 80%; }
-    </style>
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(circle at center, black 45%, transparent 95%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .floating-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(30px);
+      z-index: 0;
+      opacity: 0.65;
+      animation: floatOrb 8s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    .orb1 {
+      width: 220px;
+      height: 220px;
+      top: 80px;
+      right: 5%;
+      background: radial-gradient(circle, rgba(119,230,255,0.7), rgba(119,230,255,0.05));
+    }
+
+    .orb2 {
+      width: 260px;
+      height: 260px;
+      bottom: 100px;
+      left: 4%;
+      background: radial-gradient(circle, rgba(140,123,255,0.7), rgba(140,123,255,0.05));
+      animation-delay: 1s;
+    }
+
+    .orb3 {
+      width: 160px;
+      height: 160px;
+      top: 55%;
+      right: 35%;
+      background: radial-gradient(circle, rgba(255,120,200,0.5), rgba(255,120,200,0.04));
+      animation-delay: 2s;
+    }
+
+    @keyframes floatOrb {
+      from {
+        transform: translateY(0) translateX(0) scale(1);
+      }
+      to {
+        transform: translateY(-25px) translateX(18px) scale(1.08);
+      }
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 16px;
+      z-index: 50;
+      width: min(1180px, 92%);
+      margin: 20px auto 0;
+      background: rgba(8, 17, 31, 0.55);
+      backdrop-filter: blur(18px);
+      border: 1px solid var(--stroke);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px 20px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      color: #fff;
+    }
+
+    .brand span {
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: 0.25s;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      align-items: center;
+      padding: 50px 0 70px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .glass-card {
+      background: var(--glass);
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-content {
+      padding: 38px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content::before {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(119,230,255,0.25), transparent 70%);
+      top: -60px;
+      left: -60px;
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--primary);
+      font-size: 0.9rem;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 .gradient-text {
+      background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      color: var(--muted);
+      line-height: 2;
+      font-size: 1.03rem;
+      margin-bottom: 26px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .btn {
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      padding: 14px 22px;
+      border-radius: 14px;
+      font-size: 0.96rem;
+      transition: 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      color: #07111f;
+      background: linear-gradient(135deg, var(--primary), #b4f4ff);
+      box-shadow: 0 0 24px rgba(119,230,255,0.3);
+      font-weight: bold;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 0 34px rgba(119,230,255,0.45);
+    }
+
+    .btn-secondary {
+      color: #fff;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-3px);
+      background: rgba(255,255,255,0.11);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .stat {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 18px;
+      padding: 18px 14px;
+      text-align: center;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.3rem;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .hero-image-card {
+      padding: 18px;
+      position: relative;
+      transform-style: preserve-3d;
+    }
+
+    .hero-image-wrap {
+      border-radius: 24px;
+      overflow: hidden;
+      position: relative;
+      transform: translateZ(30px);
+    }
+
+    .hero-image-wrap img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      max-height: 720px;
+    }
+
+    .hero-image-wrap::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(7,17,31,0.25), transparent 40%);
+      pointer-events: none;
+    }
+
+    .image-tag {
+      position: absolute;
+      bottom: 32px;
+      left: 32px;
+      background: rgba(10,20,35,0.62);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 18px;
+      padding: 14px 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .image-tag strong {
+      display: block;
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .image-tag span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    section {
+      padding: 40px 0 80px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 34px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(1.7rem, 4vw, 2.7rem);
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      max-width: 760px;
+      margin: 0 auto;
+      line-height: 2;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .service-card {
+      padding: 24px;
+      transition: 0.35s ease;
+      transform-style: preserve-3d;
+      min-height: 220px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -20% -40% auto;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(119,230,255,0.14), transparent 70%);
+      pointer-events: none;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(119,230,255,0.25);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.35), 0 0 24px rgba(119,230,255,0.08);
+    }
+
+    .service-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+      font-size: 1.5rem;
+      background: linear-gradient(135deg, rgba(119,230,255,0.2), rgba(140,123,255,0.2));
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .service-card h3 {
+      margin-bottom: 12px;
+      font-size: 1.08rem;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      line-height: 1.95;
+      font-size: 0.95rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 26px;
+      align-items: center;
+    }
+
+    .about-image {
+      padding: 16px;
+    }
+
+    .about-image img {
+      width: 100%;
+      border-radius: 24px;
+      display: block;
+      object-fit: cover;
+      max-height: 720px;
+    }
+
+    .about-content {
+      padding: 34px;
+    }
+
+    .about-content h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      margin-bottom: 16px;
+    }
+
+    .about-content p {
+      color: var(--muted);
+      line-height: 2.1;
+      margin-bottom: 18px;
+    }
+
+    .about-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .about-list li {
+      list-style: none;
+      padding: 14px 16px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 16px;
+      color: #e8efff;
+    }
+
+    .contact-box {
+      padding: 34px;
+      text-align: center;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      line-height: 2;
+      max-width: 720px;
+      margin: 0 auto 20px;
+    }
+
+    .contact-actions {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    footer {
+      padding: 20px 0 50px;
+      text-align: center;
+      color: var(--muted);
+      position: relative;
+      z-index: 2;
+    }
+
+    .tilt {
+      transform-style: preserve-3d;
+      transition: transform 0.15s linear;
+      will-change: transform;
+    }
+
+    @media (max-width: 1100px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 30px;
+      }
+
+      .hero-content,
+      .about-content,
+      .contact-box {
+        padding: 26px;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-inner {
+        justify-content: center;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .image-tag {
+        left: 18px;
+        right: 18px;
+        bottom: 18px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <div class="header-top">
-        <div style="font-weight: bold; letter-spacing: 2px;">RAANA KARAMI</div>
-        <div id="mini-clock"></div>
+  <div class="floating-orb orb1"></div>
+  <div class="floating-orb orb2"></div>
+  <div class="floating-orb orb3"></div>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <div class="brand">Raanakarami <span>AI</span></div>
+      <div class="nav-links">
+        <a href="#home">خانه</a>
+        <a href="#services">خدمات</a>
+        <a href="#about">درباره من</a>
+        <a href="#contact">ارتباط</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero container" id="home">
+    <div class="hero-grid">
+      <div class="hero-content glass-card tilt">
+        <div class="hero-badge">✦ ساخت بیزینس با هوش مصنوعی</div>
+        <h1>
+          سلام، من <span class="gradient-text">رعنا کرمی</span> هستم
+        </h1>
+        <p>
+          مدرس، مشاور و ارائه‌دهنده خدمات هوش مصنوعی.  
+          به شما کمک می‌کنم با استفاده از AI، محتوای حرفه‌ای تولید کنید، حضور آنلاین قوی‌تری بسازید،
+          سایت و برند شخصی خودتان را توسعه دهید و فرایندهای کاری‌تان را هوشمندتر کنید.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://t.me/Raanakarami9120" target="_blank">مشاوره و سفارش</a>
+          <a class="btn btn-secondary" href="#services">مشاهده خدمات</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <strong>AI</strong>
+            <span>آموزش و مشاوره</span>
+          </div>
+          <div class="stat">
+            <strong>Content</strong>
+            <span>تولید محتوای هوشمند</span>
+          </div>
+          <div class="stat">
+            <strong>Web</strong>
+            <span>طراحی سایت و برندینگ</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-image-card glass-card tilt">
+        <div class="hero-image-wrap">
+          <img src="35FFD69F-8B10-4258-8976-71DA09C1BB31.png" alt="رعنا کرمی" />
+        </div>
+        <div class="image-tag">
+          <strong>Raanakarami</strong>
+          <span>AI Instructor • Content Creator • Digital Consultant</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="services" class="container">
+    <div class="section-title">
+      <h2>خدمات من</h2>
+      <p>
+        خدمات تخصصی من بر پایه هوش مصنوعی، تولید محتوا، آموزش، برندینگ و توسعه حضور حرفه‌ای شما در فضای دیجیتال طراحی شده‌اند.
+      </p>
     </div>
 
-    <h1>خدمات تخصصی هوش مصنوعی</h1>
-    <p class="sub-header">از طراحی تا اجرا؛ هوشمندانه کسب‌وکار خود را بسازید.</p>
+    <div class="services-grid">
+      <div class="service-card glass-card tilt">
+        <div class="service-icon">🧠</div>
+        <h3>آموزش هوش مصنوعی</h3>
+        <p>
+          آموزش حضوری و آنلاین AI از سطح مقدماتی تا پیشرفته برای افراد، کسب‌وکارها و علاقه‌مندان به ورود حرفه‌ای به این حوزه.
+        </p>
+      </div>
 
-    <div class="grid-container">
-        <!-- خدمات ۱ -->
-        <div class="card">
-            <h3>تولید محتوا (AI)</h3>
-            <p>تدوین و تولید محتوای اینستاگرام و یوتیوب با قدرت هوش مصنوعی جهت رشد سریع برند شما.</p>
-            <a href="tg://resolve?domain=Raanakarami9120" class="cta-btn">سفارش تولید محتوا</a>
-        </div>
+      <div class="service-card glass-card tilt">
+        <div class="service-icon">🎬</div>
+        <h3>تولید محتوا با AI</h3>
+        <p>
+          ساخت سناریو، ریلز، کپشن، ایده محتوا، طراحی بصری و محتوای خلاقانه برای اینستاگرام، یوتیوب و برندهای شخصی.
+        </p>
+      </div>
 
-        <!-- خدمات ۲ -->
-        <div class="card">
-            <h3>طراحی و توسعه</h3>
-            <p>طراحی سایت، اپلیکیشن و المان‌های گرافیکی (لوگو، کاور) با ابزارهای روز هوش مصنوعی.</p>
-            <a href="tg://resolve?domain=Raanakarami9120" class="cta-btn">مشاهده نمونه‌کار</a>
-        </div>
+      <div class="service-card glass-card tilt">
+        <div class="service-icon">🌐</div>
+        <h3>طراحی سایت و لندینگ</h3>
+        <p>
+          طراحی سایت معرفی خدمات، لندینگ پیج حرفه‌ای و صفحات شخصی با ظاهر مدرن، جذاب و هماهنگ با هویت برند شما.
+        </p>
+      </div>
 
-        <!-- خدمات ۳ -->
-        <div class="card">
-            <h3>مشاوره و آموزش</h3>
-            <p>آموزش خصوصی و مشاوره آنلاین جهت به‌کارگیری AI در کسب‌وکار شما.</p>
-            <a href="tg://resolve?domain=Raanakarami9120" class="cta-btn">رزرو جلسه مشاوره</a>
-        </div>
+      <div class="service-card glass-card tilt">
+        <div class="service-icon">⚙️</div>
+        <h3>اتوماسیون و ایجنت AI</h3>
+        <p>
+          طراحی فرایندهای هوشمند و اتوماسیون برای کاهش زمان، افزایش بهره‌وری و ساخت راهکارهای نیمه‌خودکار برای کسب‌وکارها.
+        </p>
+      </div>
+
+      <div class="service-card glass-card tilt">
+        <div class="service-icon">🎤</div>
+        <h3>صدا و دوبله با AI</h3>
+        <p>
+          تولید صدا، دوبله ویدیو و استفاده از ابزارهای حرفه‌ای مثل ElevenLabs و MiniMax برای پروژه‌های محتوایی و آموزشی.
+        </p>
+      </div>
+
+      <div class="service-card glass-card tilt">
+        <div class="service-icon">🎨</div>
+        <h3>طراحی گرافیک و کاور</h3>
+        <p>
+          طراحی بنر، کاور، پست، لوگو و هویت بصری با کمک ابزارهای هوش مصنوعی برای پیج‌ها و برندهای شخصی و تجاری.
+        </p>
+      </div>
+
+      <div class="service-card glass-card tilt">
+        <div class="service-icon">💡</div>
+        <h3>مشاوره تخصصی</h3>
+        <p>
+          مشاوره برای شروع مسیر کاری با AI، توسعه برند شخصی، بهینه‌سازی خدمات و انتخاب بهترین ابزارهای هوش مصنوعی.
+        </p>
+      </div>
+
+      <div class="service-card glass-card tilt">
+        <div class="service-icon">🚀</div>
+        <h3>برندسازی دیجیتال</h3>
+        <p>
+          کمک به ساخت یک ویترین حرفه‌ای آنلاین برای معرفی خدمات، جذب مشتری و تبدیل تخصص شما به یک برند قابل اعتماد.
+        </p>
+      </div>
     </div>
+  </section>
 
-    <script>
-        function updateClock() { document.getElementById('mini-clock').textContent = new Date().toLocaleTimeString('fa-IR'); }
-        setInterval(updateClock, 1000); updateClock();
-    </script>
+  <section id="about" class="container">
+    <div class="about-grid">
+      <div class="about-image glass-card tilt">
+        <img src="1C286DCF-80E7-4FC7-9252-E9CD2045BA0F.png" alt="تدریس رعنا کرمی" />
+      </div>
+
+      <div class="about-content glass-card tilt">
+        <h2>درباره من</h2>
+        <p>
+          من رعنا کرمی هستم؛ مدرس و فعال حوزه هوش مصنوعی با تمرکز بر آموزش، تولید محتوا، طراحی سایت و توسعه خدمات دیجیتال.
+          هدف من این است که به افراد و کسب‌وکارها کمک کنم تا از هوش مصنوعی فقط به‌عنوان یک ابزار سرگرم‌کننده استفاده نکنند،
+          بلکه آن را به یک مزیت واقعی برای رشد، برندینگ و درآمد تبدیل کنند.
+        </p>
+        <p>
+          در مسیر کاری خودم، از AI برای ایده‌پردازی، طراحی، کدنویسی، تولید محتوا، تولید صدا و توسعه راهکارهای هوشمند استفاده می‌کنم
+          تا خروجی‌هایی حرفه‌ای، سریع و متناسب با نیاز واقعی مخاطب ارائه دهم.
+        </p>
+
+        <ul class="about-list">
+          <li>✓ آموزش حضوری و آنلاین هوش مصنوعی</li>
+          <li>✓ طراحی سایت شخصی و خدماتی با کمک AI</li>
+          <li>✓ تولید محتوای اینستاگرام و یوتیوب</li>
+          <li>✓ مشاوره و توسعه برند شخصی دیجیتال</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="container">
+    <div class="contact-box glass-card tilt">
+      <div class="section-title" style="margin-bottom: 16px;">
+        <h2>ارتباط با من</h2>
+      </div>
+      <p>
+        اگر برای آموزش، تولید محتوا، طراحی سایت، مشاوره یا اجرای پروژه‌های هوش مصنوعی نیاز به همکاری داری،
+        خوشحال می‌شوم از طریق تلگرام با هم در ارتباط باشیم.
+      </p>
+
+      <div class="contact-actions">
+        <a class="btn btn-primary" href="https://t.me/Raanakarami9120" target="_blank">تلگرام</a>
+        <a class="btn btn-secondary" href="https://raanakarami9120-hue.github.io/raana-ai-site/" target="_blank">مشاهده سایت</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Raanakarami | ساخت بیزینس با هوش مصنوعی</p>
+  </footer>
+
+  <script>
+    const tiltElements = document.querySelectorAll('.tilt');
+
+    tiltElements.forEach((card) => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateX = ((y - centerY) / centerY) * -6;
+        const rotateY = ((x - centerX) / centerX) * 6;
+
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-2px)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)`;
+      });
+    });
+  </script>
 </body>
 </html>
-
